@@ -1,6 +1,6 @@
 const config = {};
 
 config.BASE_DOMAIN = "/";
-config.nameSpaceKey = "TEST";
+config.nameSpaceKey = "TEST_";
 
 export default config;

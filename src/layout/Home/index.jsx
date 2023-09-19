@@ -41,18 +41,18 @@ const Index = () => {
 
   const navigationHandler = (selectedValue) => {
     navigate(`${config.BASE_DOMAIN}dashboard`);
-    setSessionStorage("_SelectedSearch", { test: selectedValue });
-    setSessionStorage("_SelectedScenario", { test: selectedValue });
+    setSessionStorage("SelectedSearch", selectedValue);
+    setSessionStorage("SelectedScenario", selectedValue);
   };
 
   const onClickHandler = (e) => {
-    const { current: chart } = chartRef;
+    if (!chartRef.current) return;
 
-    if (!chart) return;
+    const { current: chart } = chartRef;
 
     let element = getElementsAtEvent(chart, e);
 
-    if (element.length === undefined) return;
+    if (!element || element.length === 0) return;
 
     const { index } = element[element.length - 1];
 
@@ -69,7 +69,7 @@ const Index = () => {
             chartData={chartData}
             labels={labels}
             data={data}
-            chartRef={chartRef}
+            innerChartRef={chartRef}
             onClickHandler={onClickHandler}
           />
         </CardBody>

@@ -20,7 +20,7 @@ ChartJS.register(
   Legend
 );
 
-const Index = ({ chartData, labels, data, chartRef, onClickHandler }) => {
+const Index = ({ chartData, labels, data, innerChartRef, onClickHandler }) => {
   const graphData = {
     data: {
       labels: labels,
@@ -61,7 +61,7 @@ const Index = ({ chartData, labels, data, chartRef, onClickHandler }) => {
   return (
     <Bar
       data-testid='favGraph'
-      ref={chartRef}
+      ref={innerChartRef}
       onClick={onClickHandler}
       data={graphData.data}
       options={graphData.options}
